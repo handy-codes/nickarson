@@ -7,6 +7,8 @@ import { IconBadge } from "@/components/icon-badge";
 import TitleForm from "./_components/title-form";
 import DescriptionForm from "./_components/description";
 import ImageForm from "./_components/image-form";
+import CategoryForm from "./_components/category-form";
+import PriceForm from "./_components/price-form";
 // import { Banner } from "@/components/banner";
 // import { DescriptionForm } from "./_components/description-form";
 // import { ImageForm } from "./_components/image-form";
@@ -143,16 +145,16 @@ const CourseIdPage = async ({
               initialData={course}
               courseId={course.id}
             />
-            {/* <CategoryForm
+            <CategoryForm
               initialData={course}
               courseId={course.id}
               options={categories.map((category) => ({
                 label: category.name,
                 value: category.id,
               }))}
-            /> */}
+            />
           </div>
-          {/* <div className="space-y-6">
+          <div className="space-y-6">
             <div>
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={ListChecks} />
@@ -160,10 +162,10 @@ const CourseIdPage = async ({
                   Course chapters
                 </h2>
               </div>
-              <ChaptersForm
+              {/* <ChaptersForm
                 initialData={course}
                 courseId={course.id}
-              />
+              /> */}
             </div>
             <div>
               <div className="flex items-center gap-x-2">
@@ -188,8 +190,8 @@ const CourseIdPage = async ({
                 initialData={course}
                 courseId={course.id}
               /> */}
-            {/* </div> */}
-          {/* </div> */} 
+            </div> 
+          </div> 
         </div>
       </div>
     </>
