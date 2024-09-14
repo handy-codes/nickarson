@@ -9,23 +9,25 @@ datasource db {
   relationMode = "prisma"
 }
 
-// enum MemberRole {
-//   ADMIN
-//   TEACHER
-//   STUDENT
-// }
+//recheck below opening
+enum MemberRole {
+  ADMIN
+  TEACHER
+  STUDENT
+}
 
-// model Profile {
-//   id String @id @default(auto()) @map("_id") @db.ObjectId
-//   userId String @unique
-//   name String
-//   imageUrl String?  
-//   email String  
+//recheck below opening
+model Profile {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @unique
+  name String
+  imageUrl String?  
+  email String  
 
-//   role MemberRole @default(STUDENT)
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
+  role MemberRole @default(STUDENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 model Course {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
@@ -38,9 +40,10 @@ model Course {
 
   categoryId  String?    @db.ObjectId
   category    Category?  @relation(fields: [categoryId], references: [id])
+  
   attachments Attachment[]
-  // chapters    Chapter[] 
-  // purchases Purchase[]
+  chapters    Chapter[] 
+  purchases Purchase[]
 
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -49,6 +52,7 @@ model Course {
   @@fulltext([title])  
 }
 
+//recheck below opening
 
 // model Course {
 //   id          String     @id @default(uuid())  @map("_id") @db.ObjectId  //fixer
@@ -71,7 +75,7 @@ model Course {
 //   updatedAt   DateTime   @updatedAt
 
 //   @@index([categoryId])
-//   // @@fulltext([title])
+//   @@fulltext([title])
   
 // }
 
@@ -89,19 +93,21 @@ model Attachment {
   @@index([courseId])
 }
 
+//recheck below opening
 // model Attachment {
-//   id        String     @id @default(uuid()) @map("_id") @db.ObjectId
-//   name      String    
-//   url       String @db.Text
+  // id        String     @id @default(uuid()) @map("_id") @db.ObjectId
+  // name      String    
+  // url       String @db.Text
 
-//   // courseId  String     @db.ObjectId
-//   courseId  String     
-//   course    Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+//recheck below opening
+  // courseId  String     @db.ObjectId
+  // courseId  String     
+  // course    Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
-//   createdAt DateTime   @default(now())
-//   updatedAt DateTime   @updatedAt
+  // createdAt DateTime   @default(now())
+  // updatedAt DateTime   @updatedAt
 
-//   @@index([courseId])
+  // @@index([courseId])
 // }
 
 model Category {
@@ -113,77 +119,78 @@ model Category {
   updatedAt DateTime   @updatedAt
 }
 
-// model Chapter {
-//   id          String     @id @default(auto()) @map("_id") @db.ObjectId
-//   title       String
-//   description String?
-//   videoUrl    String?
-//   position    Int
-//   isPublished Boolean    @default(false)
-//   isFree      Boolean    @default(false)
+model Chapter {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  videoUrl    String?
+  position    Int
+  isPublished Boolean    @default(false)
+  isFree      Boolean    @default(false)
 
-//   muxData     MuxData?
+  muxData     MuxData?
 
-//   courseId    String     @db.ObjectId
-//   course      Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  courseId    String     @db.ObjectId
+  course      Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
-//   userProgress UserProgress[]
+  userProgress UserProgress[]
 
-//   createdAt   DateTime   @default(now())
-//   updatedAt   DateTime   @updatedAt
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 
-//   @@index([courseId])
-// }
+  @@index([courseId])
+}
 
-// model MuxData {
-//   id          String     @id @default(auto()) @map("_id") @db.ObjectId
-//   assetId     String
-//   playbackId  String?
+model MuxData {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  assetId     String
+  playbackId  String?
 
-//   chapterId   String     @unique @db.ObjectId
-//   chapter     Chapter    @relation(fields: [chapterId], references: [id], onDelete: Cascade)
-// }
+  chapterId   String     @unique @db.ObjectId
+  chapter     Chapter    @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+}
 
-// model UserProgress {
-//   id          String     @id @default(auto()) @map("_id") @db.ObjectId
-//   userId      String
+model UserProgress {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String
 
-//   chapterId   String     @db.ObjectId
-//   chapter     Chapter    @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId   String     @db.ObjectId
+  chapter     Chapter    @relation(fields: [chapterId], references: [id], onDelete: Cascade)
 
-//   isCompleted Boolean    @default(false)
+  isCompleted Boolean    @default(false)
 
-//   createdAt   DateTime   @default(now())
-//   updatedAt   DateTime   @updatedAt
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 
-//   @@index([chapterId])
-//   @@unique([userId, chapterId])
-// }
+  @@index([chapterId])
+  @@unique([userId, chapterId])
+}
 
 
-// model Purchase {
-//   id          String     @id @default(auto()) @map("_id") @db.ObjectId
-//   userId      String
+model Purchase {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String
 
-//   courseId    String     @db.ObjectId
-//   course      Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  courseId    String     @db.ObjectId
+  course      Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
-//   createdAt   DateTime   @default(now())
-//   updatedAt   DateTime   @updatedAt
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 
-//   @@unique([userId, courseId])
-//   @@index([courseId])
-// }
+  @@unique([userId, courseId])
+  @@index([courseId])
+}
 
-// model StripeCustomer {
-//   id                String     @id @default(auto()) @map("_id") @db.ObjectId
-//   userId            String     @unique
-//   stripeCustomerId String     @unique
+model StripeCustomer {
+  id                String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String     @unique
+  stripeCustomerId String     @unique
 
-//   createdAt         DateTime   @default(now())
-//   updatedAt         DateTime   @updatedAt
-// }
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+}
 
+//recheck below opening
 // model Logging {
 //   id        String   @id @default(auto()) @map("_id") @db.ObjectId
 //   url       String
