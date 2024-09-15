@@ -83,10 +83,10 @@ export const ChaptersList = ({
                     >
                     <div
                         className={`px-2 py-3 border-r border-r-gray-200 hover:bg-gray-300 rounded-l-md transition
-                                                ${chapter.isPublished && "border-r-blue-200 hover:bg-blue-200"}
-                                                dark:border-r-slate-800 dark:hover:bg-slate-700
-                                                dark:${chapter.isPublished && "border-r-blue-600 hover:bg-blue-800"}
-                                            `}
+                          ${chapter.isPublished && "border-r-blue-200 hover:bg-blue-200"}
+                           dark:border-r-slate-800 dark:hover:bg-slate-700
+                          dark:${chapter.isPublished && "border-r-blue-600 hover:bg-blue-800"}
+                        `}
                         {...provided.dragHandleProps}
                     >
                      <Grip

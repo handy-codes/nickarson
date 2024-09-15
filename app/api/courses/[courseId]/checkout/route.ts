@@ -52,7 +52,7 @@
 //         const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [
 //             {
 //                 price_data: {
-//                     currency: "usd",
+//                     currency: "NGN",  Rechecker
 //                     product_data: {
 //                         name: course.title,
 //                     },
