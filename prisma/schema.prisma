@@ -95,19 +95,19 @@ model Attachment {
 
 //recheck below opening
 // model Attachment {
-  // id        String     @id @default(uuid()) @map("_id") @db.ObjectId
-  // name      String    
-  // url       String @db.Text
+//   id        String     @id @default(uuid()) @map("_id") @db.ObjectId
+//   name      String    
+//   url       String @db.Text
 
-//recheck below opening
-  // courseId  String     @db.ObjectId
-  // courseId  String     
-  // course    Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+// //recheck below opening
+//   courseId  String     @db.ObjectId
+//   courseId  String     
+//   course    Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
-  // createdAt DateTime   @default(now())
-  // updatedAt DateTime   @updatedAt
+//   createdAt DateTime   @default(now())
+//   updatedAt DateTime   @updatedAt
 
-  // @@index([courseId])
+//   @@index([courseId])
 // }
 
 model Category {
@@ -191,16 +191,16 @@ model StripeCustomer {
 }
 
 //recheck below opening
-// model Logging {
-//   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-//   url       String
-//   method    String
-//   body      String?
-//   response  String?
-//   statusCode Int?
-//   errorMessage String?
-//   createdAt DateTime @default(now())
-// }
+model Logging {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  url       String
+  method    String
+  body      String?
+  response  String?
+  statusCode Int?
+  errorMessage String?
+  createdAt DateTime @default(now())
+}
 
 
 

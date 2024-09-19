@@ -15,14 +15,11 @@ import {
     FormItem,
 } from "@/components/ui/form";
 
-// import Input  from "@/components/ui/input";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
-// import Link from "next/link";
-// import toast from "react-hot-toast";
 
 const formSchema = z.object({
     title: z.string().min(1, {
@@ -44,7 +41,7 @@ const CreatePage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
 
-          //toast.success(`Course ${values.title} created successfully`);
+          // toast.success(`Course ${values.title} created successfully`);
           const response = await axios.post("/api/courses", values);
 
           router.push(`/teacher/courses/${response.data.id}`);
@@ -110,7 +107,6 @@ const CreatePage = () => {
                  <Button
                     type="submit"
                     disabled={!isValid || isSubmitting}
-                    variant = "ghost"
                 >
                     Continue
                  </Button>
