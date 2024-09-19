@@ -21,7 +21,6 @@ interface ChapterIdPageProps {
 }
 
 const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
-  const { courseId, chapterId } = params;
   const { userId } = auth();
 
   if (!userId) {
